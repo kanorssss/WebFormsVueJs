@@ -6,6 +6,16 @@
     <label>Password:</label>
     <input type="password" required v-model="password">
 
+    <label>Skills:</label>
+
+    <input type="text" v-model="tempSkill" @keyup="addSkill">
+    <div v-for="skill in skills" :key="skill" class="pill">
+        {{ skill }}
+
+    </div>
+
+
+
     <label>Role:</label>
     <select v-model="role">
         <option value="developer">Web Developer</option>
@@ -19,10 +29,6 @@
         <input type="checkbox"  v-model="terms" required>
         <label>Accept Terms and Conditions</label>
     </div>
-
-    
-  
-
   </form>
 
   
@@ -37,8 +43,23 @@ data(){
         password: '',
         role:'',
         terms:false,
+        tempSkill: '',
+        skills:[]
       
     }
+    },
+    methods:{
+        addSkill(e){
+            // console.log(e);
+            //duplicate entry
+            if(e.key === ',' && this.tempSkill){
+                if(!this.skills.includes(this.tempSkill)){
+                    this.skills.push(this.tempSkill)
+                }
+                this.tempSkill = ''
+            }
+
+        }
     }
 }
 </script>
