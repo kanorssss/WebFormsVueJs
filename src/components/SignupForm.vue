@@ -9,8 +9,10 @@
     <label>Skills:</label>
 
     <input type="text" v-model="tempSkill" @keyup="addSkill">
-    <div v-for="skill in skills" :key="skill" class="pill">
-        {{ skill }}
+    <div v-for="skill in skills" :key="skill" class="pill" >
+        <span @click="removeSkill(skill)">
+            {{ skill }}
+        </span>
 
     </div>
 
@@ -59,6 +61,11 @@ data(){
                 this.tempSkill = ''
             }
 
+        },
+        removeSkill(skill){
+            this.skills = this.skills.filter(item => {
+                return item!== skill
+            }) 
         }
     }
 }
@@ -82,7 +89,7 @@ label{
     letter-spacing: 1px;
     font-weight: bold;
 }
-input, select{
+input, select{ 
     display: block;
     padding: 10px 6px;
     width: 100%;
@@ -98,5 +105,17 @@ input[type="checkbox"]{
     position: relative;
     top: 2px;
     
+}
+.pill{
+    display: inline-block;
+    margin: 20px 10px 0 0;
+    padding: 6px 12px;
+    background: #eee;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
 }
 </style>
