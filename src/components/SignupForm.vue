@@ -12,7 +12,21 @@
         <option value="designer">Web Designer</option>
 
     </select>
+
+
+    <!--Multiple CheckBox -->
+    <div class="terms">
+        <input type="checkbox"  v-model="terms" required>
+        <label>Accept Terms and Conditions</label>
+    </div>
+
+    
+  
+
   </form>
+
+  
+
 </template>
 
 <script>
@@ -21,7 +35,9 @@ data(){
     return{
         email: '',
         password: '',
-        role:''
+        role:'',
+        terms:false,
+      
     }
     }
 }
@@ -54,5 +70,12 @@ input, select{
     border-bottom: 1px solid #ddd;
     color: #555;
 }
-
+input[type="checkbox"]{
+    display: inline-block;
+    width: 16px;
+    margin: 0 10px 0 0;
+    position: relative;
+    top: 2px;
+    
+}
 </style>
